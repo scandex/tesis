@@ -2,7 +2,64 @@
     <% @post.each do |d|%>
         <list  class="list-group-item">
             <%= d.response%>
+            <% tmp = Post.find(d.id)%>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Detalles</button>
+            <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Post</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Usuario:<%= tmp.user%></h5>
+        <h5>Votos: <%= tmp.votes%></h5>
+        <h5>Contenido:</h5>
+        <p><%= tmp.response%></p>
+        <h5>Comentarios:</h5>
+        <ul class="list-group">
+            <% tmp.comments.each do |x|%>
+              <li class="list-group-item"><%=x.response%></li>
+              <%end%>
+        </ul>
+        <h5>Conceptos:</h5>
+        <ul class="list-group">
+            <% tmp.concepts.each do |x|%>
+              <li class="list-group-item"><%=x.concepto%></li>
+              <%puts x.concepto%>
+              <%end%>
+        </ul>
+        <h5>Verbos:</h5>
+        <ul class="list-group">
+            <% tmp.verbs.each do |x|%>
+              <li class="list-group-item"><%=x%></li>
+              <%end%>
+        </ul>
+        <h5>Adjetivos:</h5>
+        <ul class="list-group">
+            <% tmp.adjs.each do |x|%>
+              <li class="list-group-item"><%=x%></li>
+              <%end%>
+        </ul>
+        <h5>Sustantivos:</h5>
+        <ul class="list-group">
+            <% tmp.nouns.each do |x|%>
+              <li class="list-group-item"><%=x%></li>
+              <%end%>
+        </ul>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
         </list>
         <%end%>
 </div>
-<%= paginate @post, :method =>:post %>
+<%= paginate @post%>
