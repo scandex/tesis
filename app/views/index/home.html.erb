@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.min.css" />
+
+</head>
+
+<body>
+    <form class="button_to" method="post" id="lola" action="rpost">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="./"><span>Recomendacion foros</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Palabras Clave
+                                    </h3>
+                            </div>
+                            <div class="panel-body">
+    
+                                <label for="id_label_single" style="width:100%">
+                                      Conceptos
+    
+                                          <select class="js-example-basic-multiple" id="scon" name="con[]" multiple="multiple" style="width:100%">
+                                              <% @concept.each do |d|%>
+                                                <option value="<%=d.id%>" key=
+                                                    <%=d.id%>>
+                                                    <%=d.id%>
+                                                </option>
+                                                <%end%>
+                                        </select>
+                                    </label>
+                                <label for="id_label_single" style="width:100%">
+                                      Verbos
+    
+                                          <select class="js-example-basic-multiple" id="sverb" name="verb[]" multiple="multiple" style="width:100%">
+                                              <% @verbs.each do |d|%>
+                                                <option value="<%=d.id%>" key=
+                                                    <%=d.id%>>
+                                                    <%=d.id%>
+                                                </option>
+                                                <%end%>
+                                        </select>
+                                    </label>
+                                <label for="id_label_single" style="width:100%">
+                                      Adjetivos
+    
+                                          <select class="js-example-basic-multiple" id="sadj" name="adj[]" multiple="multiple" style="width:100%">
+                                              <% @adjs.each do |d|%>
+                                                <option value="<%=d.id%>" key=
+                                                    <%=d.id%>>
+                                                    <%=d.id%>
+                                                </option>
+                                                <%end%>
+                                        </select>
+                                    </label>
+                                <label for="id_label_single" style="width:100%">
+                                      Sustantivos
+    
+                                          <select class="js-example-basic-multiple" id="snoun" name="noun[]" multiple="multiple" style="width:100%">
+                                               <% @nouns.each do |d|%>
+                                                <option value="<%=d.id%>" key=
+                                                    <%=d.id%>>
+                                                    <%=d.id%>
+                                                </option>
+                                                <%end%>
+                                        </select>
+                                    </label>
+                                    <div class="checkbox">
+                                      <label><input name="check" id="c" type="checkbox" value="">¿Debe contener todos los terminos?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Peso relaciones
+                                    </h3>
+                            </div>
+                            <div class="panel-body">
+                                <label>
+                                Conceptos-Verbos<br>
+                                <input id="ex8" name="s1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="10" />
+                                </label><br>
+                                <label>
+                                Conceptos-Adjetivos<br>
+                                <input id="ex9" name="s2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="10" />
+                                </label><br>
+                                <label>
+                                Conceptos-Sustantivos<br>
+                                <input id="ex10" name="s3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="10" />
+                                </label><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+    
+            </div>
+            <div class="container" id="loader">
+                <div class="row">
+                    <h3>Loading data... Please wait.</h3>
+                    <div class="progress progress-striped active page-progress-bar">
+                        <div class="progress-bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+         <div class="panel panel-info">
+                    <div class="panel-heading text-center">Post recomendados</div>
+                    <div class="dynamic">
+                        <%=render partial: 'post' %>
+                </div>
+                </div>
+    
+    
+    
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Sebastian Camilo Arguelles Niño 
+                </p>
+            </div>
+        </footer>
+        <script type="text/javascript">
+            $('#loader').hide();
+            $(document).ready(function() {
+
+                var currentRequest;
+                jQuery.ajaxSetup({
+                    beforeSend: function() {
+                        if (currentRequest != null) {
+                            currentRequest.abort();
+                        }
+                        $('#loader').show();
+                    },
+                    complete: function() {
+                        $('#loader').hide();
+                    },
+                    success: function() {}
+                });
+                $(".js-example-basic-multiple").select2({
+                    dropdownAutoWidth: true,
+                });
+                $('a[data-toggle="tooltip"]').tooltip({
+                    animated: 'fade',
+                    placement: 'bottom',
+                    html: true
+                });
+                $("#ex8,#ex9,#ex10").slider();
+
+                $('#ex8,#ex9,#ex10,#scon,#sverb,#sadj,#snoun,#c').change(function() {
+                    var form = $('#lola');
+                    var post_url = form.attr('action');
+                    var post_data = form.serialize();
+
+                    currentRequest = $.ajax({
+                        type: 'POST',
+                        url: post_url,
+                        data: post_data,
+                        success: function(msg) {
+                            $(".dynamic").fadeOut(800, function() {
+                                $(".dynamic").html(msg).fadeIn().delay(1000);
+
+                            });
+                        }
+                    });
+                });
+
+                $('#lola').submit(function(e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var post_url = form.attr('action');
+                    var post_data = form.serialize();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: post_url,
+                        data: post_data,
+                        success: function(msg) {
+
+                        }
+                    });
+                });
+
+            });
+        </script>
+</body>
+
+</html>
