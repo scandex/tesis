@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   #post '/rpost' => 'index#rpost' ,as: :rpost
   match "/rpost" => "index#rpost", as: :rpost, via: [:get, :post]
   get '/verbs', :to => redirect('/verbs.html')
+  get '/a', :to => redirect('/a.html')
+  get '/nouns', :to => redirect('/nouns.html')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
