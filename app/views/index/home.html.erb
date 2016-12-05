@@ -28,6 +28,13 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <a class="navbar-brand" href="./"><span>Recomendacion foros</span></a>
                 </div>
+<ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/verbs">Verbos</a></li>
+      <li><a href="#">Adjetivos</a></li>
+      <li><a href="#">Sustantivos</a></li>
+      
+    </ul>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">About</a></li>
@@ -119,6 +126,9 @@
                                 Conceptos-Sustantivos<br>
                                 <input id="ex10" name="s3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="10" />
                                 </label><br>
+                                 <div class="checkbox">
+                                      <label><input name="check2" id="c2" type="checkbox" value="">¿Ordenar por popularidad?</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -178,7 +188,7 @@
                 });
                 $("#ex8,#ex9,#ex10").slider();
 
-                $('#ex8,#ex9,#ex10,#scon,#sverb,#sadj,#snoun,#c').change(function() {
+                $('#ex8,#ex9,#ex10,#scon,#sverb,#sadj,#snoun,#c,#c2').change(function() {
                     var form = $('#lola');
                     var post_url = form.attr('action');
                     var post_data = form.serialize();

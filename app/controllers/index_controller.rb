@@ -10,6 +10,7 @@ class IndexController < ApplicationController
         @nouns=get_nouns
         #@post= get_post(nil,nil,nil,nil,params[:s1],params[:s2],params[:s3])
         @post=  Kaminari.paginate_array(get_post(nil,nil,nil,nil,1,1,1)).page params[:page]
+        
         #render :partial => "post", :layout => false
         end
         
@@ -164,7 +165,7 @@ class IndexController < ApplicationController
         def get_post(concepts,verbs,adjs,nouns,v,a,n)
         	
             db = Mongoid::Clients.default
-            collection = db["edx2"]
+            collection = db["Copy(1)_of_edx2"]
             stages=[]
             tmp =[]
             unless concepts.nil?
@@ -188,7 +189,7 @@ class IndexController < ApplicationController
             		tmp<< {"nouns"=> i}
             	end
             end
-            
+           
             unless tmp.empty?
             	if params[:check].nil?
             	 stages<<{"$match"=>{"$or"=> tmp}}
@@ -196,6 +197,24 @@ class IndexController < ApplicationController
             	stages<<{"$match"=>{"$and"=> tmp}}
             	end
             end
+            
+            if !params[:check2].nil?
+            	stages<<
+            {
+			"$project"=> {
+				"_id"=>1,
+				"response"=>1,
+				"votes"=>1
+				}
+			}
+            	stages<<
+		{
+			"$sort"=> {
+				"votes"=> -1
+			}
+		}
+	   
+		else
             stages<<
             {
 			"$project"=> {
@@ -210,6 +229,7 @@ class IndexController < ApplicationController
 				"rank"=> -1
 			}
 		}
+		end
         col = collection.aggregate(stages)
         results = col.map { |attrs| Post2.instantiate(attrs) }
 	    return results
